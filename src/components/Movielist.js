@@ -1,20 +1,19 @@
 
 import { Card , CardGroup} from 'react-bootstrap'
 
-import { Route } from 'react-router-dom'
+
 
 import {Link} from 'react-router-dom'
+import MovieDesci from './MovieDescri';
 
 
 
 
-const Movielist = (props, {match}) => {
+const Movielist = ({arr}) => {
 
-  
-  
-    const bol = props.bol;
-    const film = props.film;
-    const arr1 = props.arr1;
+  console.log(arr)
+
+   
 
     return (  
 
@@ -26,12 +25,13 @@ const Movielist = (props, {match}) => {
 <CardGroup>
   
   {
-      arr1.map((film) =>
+
+      arr.map((film) =>
 
            
          <div className="filmdetails" key={film.id}>
       
-           <Link to={`/Movie/${film.id}`}>
+           <Link to={`/description/${film.id}`}>
       
            <Card>
     <Card.Img variant="top" src={film.poster} />
@@ -45,37 +45,16 @@ const Movielist = (props, {match}) => {
       <small className="text-muted">{film.rating}</small>
     </Card.Footer>
   </Card> 
-           </Link>
-
-             <Route path={`/Movie/:MovieId`}>
-        <Movielist/>
-      </Route>
-
-       
+           </Link> 
+            </div> ) }
+          </CardGroup>
 
          </div>
-      )
-  }
+
+    </div>
+    
+
   
-
-  {bol && <Card>
-    <Card.Img variant="top" src={film.poster} />
-    <Card.Body>
-      <Card.Title>{film.name}</Card.Title>
-      <Card.Text>
-       {film.description}
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">{film.rating}</small>
-    </Card.Footer>
-  </Card> }
-</CardGroup>
-
-
-     
-        </div>
-        </div>
     );
 }
  
